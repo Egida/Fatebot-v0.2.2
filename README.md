@@ -21,9 +21,6 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 
 <img src="media/posttraffic.png" alt="http post flood, dos example">
 
-# Tutorial
-I'm lazy now.
-
 # IRC Commands
 <ul>
   <li><strong>?get [url]</li></strong>
