@@ -12,8 +12,7 @@ import (
 
 var Scan_Switch bool
 
-/*
-					How to add more IP range
+/* How to add more IP range
 
 	(1) Add you'r new ip range in to The set of const varible
 		Example:
@@ -138,8 +137,7 @@ func SSH_Session(ssh_session *ssh.Client, command string) {
 	session.Close()
 }
 
-/*
-				How to add more usernames and passwords
+/* How to add more usernames and passwords
 
 	    Just add it in to The array name "userList" and passList
 
