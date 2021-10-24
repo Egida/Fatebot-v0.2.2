@@ -23,8 +23,7 @@ var Scan_Switch bool
 			case var_name:
 					return ManageIP_range(ipRange, GenRange(255, 0))
 
-	(3) Then go to The "SSH_Conn" function,
-		And add you'r constant ip range to The array name "NetArr"
+	(3) Then go to The "SSH_Conn" function, And add you'r constant ip range to The array name "NetArr"
 		Example:
 			NetArr := []string{
 				chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
