@@ -12,12 +12,6 @@ import (
 
 var Scan_Switch bool
 
-/*
-If you don't know how to add more IP range or Usernames and Passwords.
-You can watch it in original github page. ~> https://github.com/R4bin/
-(In case that you didn't download from github page.)
-*/
-
 const (
 	//CHINANET Hubei province network
 	chpn1 = "116." //116.208.0.0 - 116.211.255.255
