@@ -64,6 +64,13 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 </ul>
 
 <ul>
+  <li><strong>?info</li></strong>
+    <ul>
+      - Get bot system information.
+    </ul>
+</ul>
+
+<ul>
   <li><strong>?kill</li></strong>
     <ul>
       - Remove payload on bot machine and left the server.
