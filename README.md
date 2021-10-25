@@ -22,9 +22,9 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 <img src="media/posttraffic.png" alt="http post flood, dos example">
 
 # Update List.
-Fatebot v0.1: Fatebot open release.
-Fatebot v0.2: Get bot system information function.
-Fatebot v0.2d: Add multiple ddos function like UDP nad Post flood at The same time(I know it really stupid).
+<p>Fatebot v0.1: Fatebot open release.</p>
+<p>Fatebot v0.2: Get bot system information function.</p>
+<p>Fatebot v0.2d: Add multiple ddos function like UDP nad Post flood at The same time.(I know it really stupid.)</p>
 
 # IRC Commands
 <ul>
