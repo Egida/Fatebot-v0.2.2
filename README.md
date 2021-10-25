@@ -24,7 +24,6 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 # Update List.
 <p><strong>Fatebot v0.1:</strong> Fatebot open release.</p>
 <p><strong>Fatebot v0.2:</strong> Get bot system information function.</p>
-<p><strong>Fatebot v0.2d:</strong> Add multiple ddos function like UDP and Post flood at The same time.(I know it really stupid.), And add turotial in to main.go and scan.go files.</p>
 
 # IRC Commands
 <ul>
