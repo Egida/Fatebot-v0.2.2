@@ -14,16 +14,16 @@ var Scan_Switch bool
 
 /* How to add more IP range.
 
-	(1) Add you'r new ip range in to The set of const varible.
+	(1) Add your new ip range in to The set of const varible.
 		Example:
 			var_name = "224." //24.0.0.0 - 24.255.255.255
 
-	(2) Go to "NextIP" function, Add The case for you'r ip range and return range of your ip.
+	(2) Go to "NextIP" function, Add The case for your ip range and return range of your ip.
 		Example:
 			case var_name:
 					return ManageIP_range(ipRange, GenRange(255, 0))
 
-	(3) Then go to The "SSH_Conn" function, And add you'r constant ip range to The array name "NetArr".
+	(3) Then go to The "SSH_Conn" function, And add your constant ip range to The array name "NetArr".
 		Example:
 			NetArr := []string{
 				chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
