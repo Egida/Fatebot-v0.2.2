@@ -13,7 +13,7 @@ import (
 )
 
 /*
-	Tip for The one that never use golang or didn't about this before.
+	*Tip for The one that never use golang or didn't about this before.*
 	This command will strip The symbol table, That mean it will make our executable file smaller.
 
 	go build -lpflags "-s -w" -o <your payload name> main.go
