@@ -63,7 +63,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
   <li><strong>?scan [ftp server]</li></strong>
     <ul>
       <li>?scan ftp://192.186.1.16/payload</li>
-      - Scan CHN ip range on SSH port and get payload with cURL.
+      - Scan CHN ip range on SSH port and get payload with curl.
     </ul>
 </ul>
 
