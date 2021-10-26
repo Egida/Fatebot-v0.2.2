@@ -10,7 +10,7 @@ This is my first IRC botnet for launch ddos attack, Write on Go language. For ed
 # Infect
 The infect function of this botnet is scanning by SSH port<strong>(default as 22)</strong> and login by dictionary attack.
 like username "admin" and password "admin". <strong>(Scan by range of CHN network. You can add more or change it, if you want.)</strong>
-This botnet use curl to get payload from FTP server, so... please prepair your FTP server first, It very important for infect process.
+This botnet use "curl" to get payload from FTP server, so... please prepair your FTP server first, It very important for infect process.
 
 <strong>I scan on my private netowrk in SSH range(1-5), And comment a function of running session.(That why bot is not join The server.)</strong>
 <img src="media/scanprocess.png" alt="SSH scan">
