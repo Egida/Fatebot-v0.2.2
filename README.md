@@ -21,10 +21,6 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 
 <img src="media/posttraffic.png" alt="http post flood, dos example">
 
-# Update List.
-<p><strong>Fatebot v0.1:</strong> Fatebot open release.</p>
-<p><strong>Fatebot v0.2:</strong> Get bot system information function. And add tutorial in to main.go and scan.go files.</p>
-
 # IRC Commands
 <ul>
   <li><strong>?get [url]</li></strong>
