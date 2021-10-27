@@ -24,7 +24,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 # Update Lists
 <p><strong>Fate v0.1</strong> = Fatebot open release.</p>
 <p><strong>Fate v0.2</strong> = Update get bot system information function and Add tutorial in main and scan file.</p>
-<p><strong>Fate v0.2a</strong> = Cut private scanning and OS signal, And change it to delete when running.</p>
+<p><strong>Fate v0.2a</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.</p>
 
 # IRC Commands
 <ul>
