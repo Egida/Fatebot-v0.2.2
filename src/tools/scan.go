@@ -27,7 +27,7 @@ var Scan_Switch bool
 		Example:
 			NetArr := []string{
 				chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
-				cgpn4, cgpn5, cgpn6, priv, var_name,
+				cgpn4, cgpn5, cgpn6, var_name,
 			}
 
 ~R4bin
