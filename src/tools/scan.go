@@ -30,7 +30,7 @@ var Scan_Switch bool
 				cgpn4, cgpn5, cgpn6, var_name,
 			}
 
-~r4bin
+~R4bin
 */
 
 const (
@@ -139,7 +139,7 @@ func SSH_Session(ssh_session *ssh.Client, command string) {
 
 	    Just add it in to The array name "userList" and passList.
 
-~r4bin
+~R4bin
 */
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
