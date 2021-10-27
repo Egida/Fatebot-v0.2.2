@@ -21,6 +21,11 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 
 <img src="media/posttraffic.png" alt="http post flood, dos example">
 
+# Update Lists
+<p>Fate v0.1 = Fatebot open release.</p>
+<p>Fate v0.2 = Update get bot system information function.</p>
+<p>Fate v0.2a = Cut private scanning.</p>
+
 # IRC Commands
 <ul>
   <li><strong>?get [url]</li></strong>
