@@ -83,14 +83,14 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 </ul>
 
 <ul>
-  <li><strong>?ddosstop</li></strong>
+  <li><strong>?stopddos</li></strong>
     <ul>
       - Stop ddos attacking.
     </ul>
 </ul>
 
 <ul>
-  <li><strong>?scanstop</li></strong>
+  <li><strong>?stopscan</li></strong>
     <ul>
       - Stop scanning.
     </ul>
