@@ -78,7 +78,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 <ul>
   <li><strong>?kill</li></strong>
     <ul>
-      - Remove payload on bot machine and left the server.
+      - Kick bot out of The server.
     </ul>
 </ul>
 
