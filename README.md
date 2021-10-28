@@ -1,6 +1,6 @@
 <h2>Attention Attention!!! My english is terrible. I'm so sorry about that :( </h2>
 
-# Fatebot v0.2a
+# Fatebot v0.2.1
 This is my first IRC botnet for launch ddos attack, Write on Go language. For education purpose only. Please test it in your lab. And i create this for join university in the future not for attack anyone server with out any permission!!!
 
 <strong>IRC commands are in the bottom of The page.</strong>
@@ -24,7 +24,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 # Update Lists
 <p><strong>Fate v0.1</strong> = Fatebot open release.</p>
 <p><strong>Fate v0.2</strong> = Update get bot system information function and Add tutorial in main and scan file.</p>
-<p><strong>Fate v0.2a</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.</p>
+<p><strong>Fate v0.2.1</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.</p>
 
 # IRC Commands
 <ul>
