@@ -10,17 +10,6 @@ import (
 	"bot/tools"
 )
 
-/*
-	*Tip for The one that never use golang or didn't know about this before.*
-	This command will strip The symbol table, That mean it will make our executable file smaller.
-
-	go build -lpflags "-s -w" -o <your payload name> main.go
-
-	Readmore here:
-		https://pkg.go.dev/cmd/link
-		https://stackoverflow.com/questions/28576173/reason-for-huge-size-of-compiled-executable-of-go
-*/
-
 ////////////////////////////////////////////////////////////////////////////
 //                         START CONFIG HERE!!!                          //
 //////////////////////////////////////////////////////////////////////////
