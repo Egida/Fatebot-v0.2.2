@@ -21,6 +21,12 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 
 <img src="img/posttraffic.png" alt="http post flood, dos example">
 
+# Build payload
+---
+chmod +x build.sh
+./build.sh
+---
+
 # Update Lists
 <p><strong>Fate v0.1</strong> = Fatebot open release.</p>
 <p><strong>Fate v0.2</strong> = Update get bot system information function and Add tutorial in main and scan file.</p>
