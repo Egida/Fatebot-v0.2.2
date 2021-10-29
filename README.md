@@ -26,7 +26,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 <p><strong>Fate v0.2</strong> = Update get bot system information function and Add tutorial in main and scan file.</p>
 <p><strong>Fate v0.2.1</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.</p>
 <p><strong>Fate v0.2.2</strong> = Cut scan failed report for fix server overheat and excess Flood, 
-  And Optimize by change ip range and default ping time, That will find SSH port faster.(Maybe, But faster than old one.)</p>
+  And Optimize by change ip range and default ping time, That will help to find SSH port faster.(Maybe, But faster than old one.)</p>
 
 # IRC Commands
 <ul>
