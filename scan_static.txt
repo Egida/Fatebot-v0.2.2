@@ -1,6 +1,5 @@
 Test scan process. Down here is The ip that i found when i test scan function for a hour.
-So not waste scan time i'll cut some ip that i not found when i test,
-Some of them i found 4-5 and some of them is less than 2.
+So... not waste scan time i'll cut some ip that i not found when i test.
 
 116.211 -> chpn1
 
