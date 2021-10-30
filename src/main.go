@@ -42,7 +42,7 @@ func main() {
 		//Server interact
 		go func() {
 			if err != nil {
-				os.Exit(0)
+				panic(err)
 			}
 			if tools.IRC_Find(ircRead, "PING :") {
 				tools.IRC_Send(irc, "PONG "+tools.IRC_Recv(ircRead, 1))
