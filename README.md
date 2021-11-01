@@ -18,6 +18,8 @@ This botnet use "curl" to get payload from FTP server, so... please prepair your
 
 # DDoS
 Raw socket programming is really hard for me. That's why all of <strong>The volumetric</strong> are a simple like udp and icmp flood.
+Main DDoS function is on <strong>The Application layer</strong>.
+
 
 <img src="img/posttraffic.png" alt="http post flood, dos example">
 
