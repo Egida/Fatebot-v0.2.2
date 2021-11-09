@@ -102,7 +102,7 @@ func nextIP(ipRange string) string {
 
 func checkPort(_ipRange string) string {
 	ptrIP := &_ipRange
-	conn, err := net.DialTimeout("tcp", *ptrIP, 100*time.Millisecond)
+	conn, err := net.DialTimeout("tcp", *ptrIP, 500*time.Millisecond)
 	if err != nil {
 		return ""
 	}
