@@ -1,7 +1,7 @@
 <h2>Attention Attention!!! My english is terrible. I'm so sorry about that :( </h2>
 
 # Fatebot v0.3
-This is my first IRC bot for launch ddos attack, Mainly target is IoT device that open default SSH port.(Scope on CHN by default.), Write on Go language. For education purpose only. Please test it in your lab. And i create this for join university in the future not for attack anyone server with out any permission!!!
+This is my first IRC bot for launch ddos attack, Mainly target is IoT device that run linux and open default SSH port.(Scope on CHN by default.), Write on Go language. For education purpose only. Please test it in your lab. And i create this for join university in the future not for attack anyone server with out any permission!!!
 
 <strong>IRC commands are in the bottom of The page.</strong>
 
