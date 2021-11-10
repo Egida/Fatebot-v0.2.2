@@ -131,7 +131,7 @@ func ssh_session(ssh_session *ssh.Client, command string) {
 
 /* How to add more usernames and passwords.
 
-	    Just add it in to The array name "userList" and passList.
+	    Just add it in to The array name "userList" and "passList".
 
 ~R4bin
 */
