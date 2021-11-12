@@ -13,7 +13,7 @@ import (
 /*
 <---- How to add more IP range. ---->
 
-(1) Add your new ip range in to The set of const varible.
+(1) Add your new ip range in to The group of const varible.
 
 	Example:
 		var_name = "224." //224.0.0.0 - 224.255.255.255
