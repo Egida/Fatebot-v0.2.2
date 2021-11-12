@@ -17,7 +17,7 @@ import (
 const (
 	IRC_Server        = "" //config IRC server and port here. //xxx.xxx.xxx.xxx:xxx //127.0.0.1:6667
 	IRC_Channel       = "" //config channel here. //should have space!!! //"#Example "
-	IRC_Chan_Password = "" //config channel password here. //If you didn't have, Just leave it blank.
+	IRC_Chan_Password = "" //config channel password here. //If you don't have it, Just leave it blank.
 	New_Payload_Name  = "" //config new payload name. //For curl process.
 )
 
