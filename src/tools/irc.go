@@ -8,10 +8,6 @@ import (
 	"time"
 )
 
-/*
-	You can config bot profile in "IRC_Login" function.
-*/
-
 type logFormation struct {
 	user, nick string
 }
