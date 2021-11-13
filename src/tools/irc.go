@@ -13,7 +13,7 @@ type logFormation struct {
 }
 
 func IRC_Conn(set_serv string) net.Conn {
-	conn, err := net.Dial("tcp", set_serv)
+	conn, _ := net.Dial("tcp", set_serv)
 	return conn
 }
 
