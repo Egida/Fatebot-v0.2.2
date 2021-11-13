@@ -15,6 +15,7 @@ type logFormation struct {
 func IRC_Conn(set_serv string) net.Conn {
 	conn, err := net.Dial("tcp", set_serv)
 	for err != nil {
+		time.Sleep(5 * time.Second)
 		continue
 	}
 	return conn
