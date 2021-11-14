@@ -63,9 +63,11 @@ func manageIP_range(mainRange, setRange string) string {
 	var ipGen []string
 	ipGen = append(ipGen, mainRange)
 	ipGen = append(ipGen, setRange, ".")
+
 	for i := 0; i < 2; i++ {
 		ipGen = append(ipGen, genRange(255, 0), ".")
 	}
+
 	ipGen[len(ipGen)-1] = ""
 	ipGen = append(ipGen, ":22")
 	return ipGen[0] + ipGen[1] + ipGen[2] + ipGen[3] +

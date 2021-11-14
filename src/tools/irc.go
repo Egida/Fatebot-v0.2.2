@@ -24,7 +24,7 @@ func IRC_Recv(cmd string, arg int) string { return strings.Split(cmd, " ")[arg] 
 func IRC_Send(sendIRC net.Conn, data string) { fmt.Fprintf(sendIRC, "%s\r\n", data) }
 
 func IRC_Report(set_serv net.Conn, set_chan, msg string) {
-	IRC_Send(set_serv, "PRIVMSG "+set_chan+" :"+msg)
+	IRC_Send(set_serv, "PRIVMSG "+set_chan+" "+" :"+msg)
 }
 
 /*
