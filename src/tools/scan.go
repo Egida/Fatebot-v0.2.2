@@ -11,8 +11,6 @@ import (
 )
 
 /*
-<---- How to add more IP range. ---->
-
 (1) Add your new ip range in to The group of const varible.
 
 	Example:
@@ -36,8 +34,6 @@ import (
 			chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
 			cgpn4, cgpn5, cgpn6, var_name,
 		}
-
-<----------------------------------->
 */
 
 var Scan_Switch bool
