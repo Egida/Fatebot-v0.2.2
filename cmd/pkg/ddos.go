@@ -45,8 +45,6 @@ func POST(postTarget, set_chan string, reportIRC net.Conn) {
 	reqBody, _ := json.Marshal(map[string]string{
 		"e-mail":   string(buffer),
 		"password": string(buffer),
-		"name":     string(buffer),
-		"type":     string(buffer),
 	})
 	post_request, err := http.NewRequest("POST", postTarget+"/"+string(reqBody), nil)
 	if err != nil {
