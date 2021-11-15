@@ -69,11 +69,10 @@ Main DDoS function is on <strong>The Application layer</strong>.
 </ul>
 
 <ul>
-  <li><strong>?vse [ip] [size]</li></strong>
+  <li><strong>?vse [ip]</li></strong>
     <ul>
-      <li>?vse 192.168.1.16 500</li>
+      <li>?vse 192.168.1.16</li>
       - Flood UDP packets by random src port with valve source engine dst port. To the target server that used to host online games.
-      <p>- Min and Max of Buffer is 1 - 700bytes.</p>
     </ul>
 </ul>
 
