@@ -5,7 +5,7 @@ This is my first IRC bot for launch ddos attack, Mainly of scan target are IoT d
 
 <strong>IRC commands are in the bottom of The page.</strong>
 
-<img src="img/drfate.jpg" alt="Dr Fate">
+<img src="assets/drfate.jpg" alt="Dr Fate">
 
 # Infect
 The infect function of this botnet is scanning by SSH port<strong>(default as 22)</strong> and login by Brute-force attack.
@@ -13,7 +13,7 @@ The infect function of this botnet is scanning by SSH port<strong>(default as 22
 This botnet use "curl" to get payload from FTP server, so... please prepair your FTP server first, It very important for infect process.
 
 <strong>I scan on my private netowrk in SSH range, And comment a function of running session.(That why bot is not join The server.)</strong>
-<img src="img/scanprocess.png" alt="SSH scan">
+<img src="assets/scanprocess.png" alt="SSH scan">
 
 
 # DDoS
@@ -21,10 +21,10 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 Main DDoS function is on <strong>The Application layer</strong>.
 
 
-<img src="img/posttraffic.png" alt="http post flood, dos example">
+<img src="assets/posttraffic.png" alt="http post flood, dos example">
 
 # Build payload
-<img src="img/buildpayload.gif" alt="how to build">
+<img src="assets/buildpayload.gif" alt="how to build">
 
 # Update Lists
 <p><strong>Fatebot v0.1</strong> = Fatebot open release.</p>
