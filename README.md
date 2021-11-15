@@ -1,6 +1,6 @@
 <h2>Attention Attention!!! My english is terrible. I'm so sorry about that :( </h2>
 
-# Fatebot v0.3
+# Fatebot v0.3.1
 This is my first IRC bot for launch ddos attack, Mainly of scan target are IoT device that run linux and open default SSH port, This bot is write on Go language. For education purpose only. Please test it in your lab. And i create this for join university in the future not for attack anyone server with out any permission!!!
 
 <strong>IRC commands are in the bottom of The page.</strong>
@@ -33,6 +33,7 @@ Main DDoS function is on <strong>The Application layer</strong>.
 <p><strong>Fatebot v0.2.2</strong> = Cut scan failed report for fix server overheat and excess flood, 
   And Optimize by change ip range and default ping time, That will help to find SSH port faster.(Maybe, But faster than old one.)</p>
 <p><strong>Fatebot v0.3</strong> = Update new DDoS Vector. Set size of UDP packet to 700 as default when bot herder not input The size.</p>
+<p><strong>Fatebot v0.3.1</strong> = Fix vse flood.</p>
 
 # IRC Commands
 <ul>
