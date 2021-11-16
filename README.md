@@ -14,9 +14,9 @@ and login by Brute-force attack. This botnet use "curl" to get payload from FTP 
 <strong>I scan on my private netowrk in SSH range, And comment a function of running session.(That why bot is not join The server.)</strong>
 <img src="assets/scanprocess.png" alt="SSH scan">
 
-# Add more IP range in "scan.go"
+# Add more IP range
 
-(1) Add your new ip range in to The group of const varible.
+(1) Go to "scan.go" file in pkg folder. Add your new ip range in to The group of const varible.
 
 		var_name = "224." //224.0.0.0 - 224.255.255.255
 		or
