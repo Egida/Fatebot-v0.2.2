@@ -11,7 +11,7 @@ This is my first IRC bot for launch ddos attack, Mainly of scan target are IoT d
 The infect function of this botnet is scanning by default SSH port<strong>(Default are scan on range of CHN network. You can add more or change it, if you want.)</strong>
 and login by Brute-force attack. This botnet use "curl" to get payload from FTP server, so... please prepair your FTP server first, It very important for infect process.
 
-<strong>I scan on my private netowrk in SSH range, And comment a function of running session.(That why bot is not join The server.)</strong>
+<strong>I scan on my private netowrk in SSH range, And comment a function of running session.(That's why bot is not join The server.)</strong>
 <img src="assets/scanprocess.png" alt="SSH scan">
 
 # Add more IP range
