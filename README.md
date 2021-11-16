@@ -42,7 +42,7 @@ Raw socket programming is really hard for me. That's why all of <strong>The volu
 Main DDoS function is on <strong>The Application layer</strong>.
 
 
-<img src="assets/postflood.png" alt="http post flood, dos example">
+<img src="assets/postfloodtraffic.png" alt="http post flood, dos example">
 
 # Build payload
 <img src="assets/buildpayload.gif" alt="how to build">
