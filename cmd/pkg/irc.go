@@ -27,9 +27,7 @@ func IRC_Report(set_serv net.Conn, set_chan, msg string) {
 	IRC_Send(set_serv, "PRIVMSG "+set_chan+" "+" :"+msg)
 }
 
-/*
-	Config bot profile in "formation" structure.
-*/
+//Config bot profile in "formation" structure.
 func IRC_Login(log_serv net.Conn, set_chan, set_chan_pass string) {
 	rand.Seed(time.Now().UnixNano())
 	alphabet := 'A' + rune(rand.Intn(26))
